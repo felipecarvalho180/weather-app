@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { getGeocode } from '../../services/geocode/geocode.service';
+import { getWeather } from '../../services/weather/weather.service';
+import { Wrapper } from './style';
 
-const BasicTitle = styled.h1`
-  color: blue;
-`;
+interface GeoCode {
+  city: string;
+  state: string;
+}
 
 const App: React.FC = () => {
-  const { REACT_APP_OPEN_WEATHER_KEY, REACT_APP_OPEN_CAGE_KEY } = process.env;
-
   const [userGeolocation, setUserGeolication] = useState<GeolocationPosition>();
   const [
     geolocationPositionError,
     setGeolocationPositionError,
   ] = useState<boolean>();
+  const [geocode, setGeocode] = useState<GeoCode>();
 
   async function getUserGeolocation() {
     const { geolocation } = navigator;
@@ -23,28 +25,28 @@ const App: React.FC = () => {
     );
   }
 
-  async function getWeather() {
+  async function handleGetWeather() {
     if (!userGeolocation) return;
-
     const { latitude, longitude } = userGeolocation.coords;
+    await getWeather({ latitude, longitude });
+  }
 
-    await fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${REACT_APP_OPEN_WEATHER_KEY}&units=metric&exclude=hourly,minutely`,
-    );
-
-    await fetch(
-      `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${REACT_APP_OPEN_CAGE_KEY}`,
-    );
+  async function handleGet() {
+    if (!userGeolocation) return;
+    const { latitude, longitude } = userGeolocation.coords;
+    const response = await getGeocode({ latitude, longitude });
+    setGeocode(response);
   }
 
   useEffect(() => {
     if (!userGeolocation) return;
-    getWeather();
+
+    handleGetWeather();
+    handleGet();
   }, [userGeolocation]);
 
   return (
-    <div>
-      <BasicTitle>Basic React App</BasicTitle>
+    <Wrapper>
       {geolocationPositionError && (
         <p>
           Não foi possivel pegar sua localização, para prosseguir entre nas
@@ -62,10 +64,15 @@ const App: React.FC = () => {
           </p>
         </div>
       )}
+      {geocode && (
+        <p>
+          {geocode.city}, {geocode.state}
+        </p>
+      )}
       <button type="button" onClick={getUserGeolocation}>
         Pegar localização
       </button>
-    </div>
+    </Wrapper>
   );
 };
 
