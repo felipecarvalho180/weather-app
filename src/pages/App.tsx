@@ -23,7 +23,7 @@ const App: React.FC = () => {
 
   async function getWeather() {
     await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${userGeolocation?.coords.latitude}&lon=${userGeolocation?.coords.longitude}&appid=${process.env.REACT_APP_OPEN_WEATHER_KEY}`,
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${userGeolocation?.coords.latitude}&lon=${userGeolocation?.coords.longitude}&appid=${process.env.REACT_APP_OPEN_WEATHER_KEY}&units=metric&exclude=hourly,minutely`,
     );
   }
 
