@@ -6,6 +6,8 @@ const BasicTitle = styled.h1`
 `;
 
 const App: React.FC = () => {
+  const { REACT_APP_OPEN_WEATHER_KEY, REACT_APP_OPEN_CAGE_KEY } = process.env;
+
   const [userGeolocation, setUserGeolication] = useState<GeolocationPosition>();
   const [
     geolocationPositionError,
@@ -22,8 +24,16 @@ const App: React.FC = () => {
   }
 
   async function getWeather() {
+    if (!userGeolocation) return;
+
+    const { latitude, longitude } = userGeolocation.coords;
+
     await fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${userGeolocation?.coords.latitude}&lon=${userGeolocation?.coords.longitude}&appid=${process.env.REACT_APP_OPEN_WEATHER_KEY}&units=metric&exclude=hourly,minutely`,
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${REACT_APP_OPEN_WEATHER_KEY}&units=metric&exclude=hourly,minutely`,
+    );
+
+    await fetch(
+      `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${REACT_APP_OPEN_CAGE_KEY}`,
     );
   }
 
