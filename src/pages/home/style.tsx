@@ -15,8 +15,3 @@ export const ContentWrapper = styled.div`
   align-items: center;
   flex-direction: column;
 `;
-
-export const WeatherIcon = styled.img`
-  width: 100px;
-  height: 100px;
-`;

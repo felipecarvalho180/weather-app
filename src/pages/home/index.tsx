@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { getGeocode } from '../../services/geocode/geocode.service';
 import { getWeather } from '../../services/weather/weather.service';
-import { ContentWrapper, WeatherIcon, Wrapper } from './style';
-import { WeatherResponse } from '../../models/weather/weather.model';
+import { ContentWrapper, Wrapper } from './style';
+import {
+  DailyResponse,
+  WeatherResponse,
+} from '../../models/weather/weather.model';
 import { GeocodeResponse } from '../../models/geocode/geocode.model';
 import Location from '../../components/location';
 import CurrentWeather from '../../components/current-weather';
 import PermissionError from '../../components/permission-error';
 import CheckWeatherButton from '../../components/check-weather-button';
 import { ColumnWrapper, InlineWrapper } from '../../style/components';
+import DailyWeather from '../../components/daily-weather';
 
 const App: React.FC = () => {
   const [userGeolocation, setUserGeolication] = useState<GeolocationPosition>();
@@ -62,21 +66,11 @@ const App: React.FC = () => {
           <Location {...geocode} />
           <CurrentWeather {...weather.current} />
           <InlineWrapper>
-            {weather.daily.map((day) => (
-              <ColumnWrapper key={day.dataTime}>
-                <h2>
-                  {new Date(day.dataTime * 1000).toDateString().substr(0, 3)}
-                </h2>
-                <InlineWrapper>
-                  <h3>{Math.round(day.tempMax)}º/</h3>
-                  <h3>{Math.round(day.tempMin)}º</h3>
-                </InlineWrapper>
-                <WeatherIcon
-                  src={`http://openweathermap.org/img/wn/${day.weatherIcon}@2x.png`}
-                  alt="Icone temperatura"
-                />
-              </ColumnWrapper>
-            ))}
+            {weather.daily
+              .map((day: DailyResponse) => (
+                <DailyWeather key={day.dataTime} {...day} />
+              ))
+              .slice(1)}
           </InlineWrapper>
         </ContentWrapper>
       )}

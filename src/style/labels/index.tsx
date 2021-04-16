@@ -5,6 +5,7 @@ export const Label = styled.span`
   color: ${PRIMARY_COLOR};
   font-size: 14px;
   margin: 0;
+  font-weight: 100;
 `;
 
 export const SecondaryLabel = styled.span`

@@ -2,7 +2,13 @@ import React from 'react';
 import { CurrentResponse } from '../../models/weather/weather.model';
 import { ColumnWrapper, InlineWrapper } from '../../style/components';
 import { Label } from '../../style/labels';
-import { Subtitles, SubtitleWrapper, TempLabel, WeatherIcon } from './style';
+import {
+  Subtitles,
+  SubtitlesWrapper,
+  TempLabel,
+  WeatherIcon,
+  Wrapper,
+} from './style';
 
 const CurrentWeather: React.FC<CurrentResponse> = ({
   temp,
@@ -11,22 +17,22 @@ const CurrentWeather: React.FC<CurrentResponse> = ({
   humidity,
   weatherIcon,
 }: CurrentResponse) => (
-  <ColumnWrapper>
+  <Wrapper>
     <InlineWrapper>
-      <ColumnWrapper>
-        <TempLabel>{Math.round(temp)}ºC</TempLabel>
-        <Label>Updated {new Date(dataTime * 1000).toLocaleTimeString()}</Label>
-      </ColumnWrapper>
       <WeatherIcon
         src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
         alt="Icone temperatura"
       />
+      <TempLabel>{Math.round(temp)}ºC</TempLabel>
     </InlineWrapper>
-    <SubtitleWrapper>
-      <Subtitles>Feels like {Math.round(feelsLike)}</Subtitles>
-      <Subtitles>Humidity {humidity}%</Subtitles>
-    </SubtitleWrapper>
-  </ColumnWrapper>
+    <ColumnWrapper>
+      <InlineWrapper>
+        <Subtitles>Feels like {Math.round(feelsLike)}ºC</Subtitles>
+        <Subtitles>Humidity {humidity}%</Subtitles>
+      </InlineWrapper>
+      <Label>Updated {new Date(dataTime * 1000).toLocaleTimeString()}</Label>
+    </ColumnWrapper>
+  </Wrapper>
 );
 
 export default CurrentWeather;
