@@ -25,7 +25,15 @@ export interface ComponentGeocodeInterface {
   _type: string;
 }
 
-export const Geocode = ({ city, state }: ComponentGeocodeInterface) => ({
+export interface GeocodeResponse {
+  city: string;
+  state: string;
+}
+
+export const Geocode = ({
+  city,
+  state,
+}: ComponentGeocodeInterface): GeocodeResponse => ({
   city,
   state,
 });

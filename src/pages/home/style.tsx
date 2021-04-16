@@ -1,5 +1,22 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+`;
+
+export const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const WeatherIcon = styled.img`
+  width: 100px;
+  height: 100px;
 `;

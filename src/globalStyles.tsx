@@ -1,10 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
+import { BACKGROUND_COLOR } from './style/colors';
 
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    background: #f0f0f0;
+    background: ${BACKGROUND_COLOR};
   }
 `;
 

@@ -65,17 +65,43 @@ export interface WeatherInterface {
   ];
 }
 
-export const Weather = ({ current, daily }: WeatherInterface) => ({
+export interface WeatherResponse {
+  current: CurrentResponse;
+  daily: DailyResponse[];
+}
+
+export interface DailyResponse {
+  dataTime: number;
+  tempMax: number;
+  tempMin: number;
+  weatherIcon: string;
+}
+
+export interface CurrentResponse {
+  clouds: number;
+  dataTime: number;
+  feelsLike: number;
+  humidity: number;
+  temp: number;
+  weatherIcon: string;
+}
+
+export const Weather = ({
+  current,
+  daily,
+}: WeatherInterface): WeatherResponse => ({
   current: {
+    dataTime: current.dt,
     clouds: current.clouds,
-    feels_like: current.feels_like,
+    feelsLike: current.feels_like,
     humidity: current.humidity,
     temp: current.temp,
-    weatherMain: current.weather[0].main,
+    weatherIcon: current.weather[0].icon,
   },
-  daily: daily.map(({ temp, weather }) => ({
+  daily: daily.map(({ temp, weather, dt }) => ({
+    dataTime: dt,
     tempMax: temp.max,
     tempMin: temp.min,
-    weatherType: weather[0].main,
+    weatherIcon: weather[0].icon,
   })),
 });
