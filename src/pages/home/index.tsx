@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { ContentWrapper, Wrapper } from './style';
+import { ContentWrapper, DailyWrapper, Wrapper } from './style';
 import { DailyResponse } from '../../models/weather/weather.model';
 import Location from '../../components/location';
 import CurrentWeather from '../../components/current-weather';
@@ -26,13 +26,13 @@ const App: React.FC = () => {
         <ContentWrapper>
           <Location {...geocode} />
           <CurrentWeather {...current} />
-          <InlineWrapper>
+          <DailyWrapper>
             {daily
               .map((day: DailyResponse) => (
                 <DailyWeather key={day.dataTime} {...day} />
               ))
               .slice(1)}
-          </InlineWrapper>
+          </DailyWrapper>
         </ContentWrapper>
       )}
     </Wrapper>
