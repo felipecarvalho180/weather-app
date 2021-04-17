@@ -1,6 +1,6 @@
 import React from 'react';
 import { DailyResponse } from '../../models/weather/weather.model';
-import { ColumnWrapper, InlineWrapper } from '../../style/components';
+import { InlineWrapper } from '../../style/components';
 import { ContentWrapper, PrimaryLabel, SecondaryLabel, Wrapper } from './style';
 
 const DailyWeather: React.FC<DailyResponse> = ({

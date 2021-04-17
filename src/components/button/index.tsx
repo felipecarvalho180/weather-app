@@ -1,7 +1,9 @@
 import React from 'react';
 import ClockLoader from 'react-spinners/ClockLoader';
+import { useSelector } from 'react-redux';
 import { Wrapper } from './style';
 import { BasicButton } from '../../style/buttons';
+import { RootState } from '../../redux/reducers';
 
 interface ButtonProps {
   onClick: () => void;
@@ -13,11 +15,19 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   type,
   text,
-}: ButtonProps) => (
-  <Wrapper onClick={onClick}>
-    <ClockLoader loading size={20} />
-    <BasicButton type={type}>{text}</BasicButton>
-  </Wrapper>
-);
+}: ButtonProps) => {
+  const { loading } = useSelector((state: RootState) => ({
+    loading: state.loading,
+  }));
+
+  return (
+    <Wrapper onClick={onClick}>
+      {loading && <ClockLoader loading size={20} />}
+      <BasicButton disabled={!!loading} type={type}>
+        {text}
+      </BasicButton>
+    </Wrapper>
+  );
+};
 
 export default Button;

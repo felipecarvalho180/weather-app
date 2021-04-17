@@ -1,10 +1,17 @@
-import { WeatherResponse } from '../../../models/weather/weather.model';
+import {
+  CurrentResponse,
+  DailyResponse,
+} from '../../../models/weather/weather.model';
 import { UPDATE_WEATHER } from '../../actions/weather/weather.actions';
 
+export interface WeatherReducer {
+  current: CurrentResponse;
+  daily: DailyResponse[];
+}
 interface WeatherReducerProps {
   type: string;
   payload: {
-    weather?: WeatherResponse;
+    weather?: WeatherReducer;
   };
 }
 
@@ -16,7 +23,9 @@ export const weatherReducer = (
 ) => {
   switch (type) {
     case UPDATE_WEATHER:
-      return payload.weather;
+      return {
+        ...payload.weather,
+      };
     default:
       return state;
   }

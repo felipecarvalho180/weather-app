@@ -2,13 +2,7 @@ import React from 'react';
 import { CurrentResponse } from '../../models/weather/weather.model';
 import { ColumnWrapper, InlineWrapper } from '../../style/components';
 import { Label } from '../../style/labels';
-import {
-  Subtitles,
-  SubtitlesWrapper,
-  TempLabel,
-  WeatherIcon,
-  Wrapper,
-} from './style';
+import { Subtitles, TempLabel, WeatherIcon, Wrapper } from './style';
 
 const CurrentWeather: React.FC<CurrentResponse> = ({
   temp,

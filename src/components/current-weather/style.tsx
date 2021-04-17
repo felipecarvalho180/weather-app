@@ -16,10 +16,6 @@ export const WeatherIcon = styled.img`
   width: 100px;
 `;
 
-export const SubtitlesWrapper = styled(InlineWrapper)`
-  margin-top: 20px;
-`;
-
 export const Subtitles = styled(Label)`
   :first-child {
     margin-right: 10px;

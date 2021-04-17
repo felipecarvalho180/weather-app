@@ -1,10 +1,12 @@
 import { UPDATE_LOADING } from '../../actions/loading/loading.actions';
 
+export interface LoadingReducer {
+  loading?: boolean;
+}
+
 interface LoadingReducerProps {
   type: string;
-  payload: {
-    loading?: boolean;
-  };
+  payload: LoadingReducer;
 }
 
 const initialState = false;

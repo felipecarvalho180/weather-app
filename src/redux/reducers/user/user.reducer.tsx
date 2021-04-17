@@ -1,11 +1,13 @@
 import { GeocodeResponse } from '../../../models/geocode/geocode.model';
 import { UPDATE_USER_GEOCODE } from '../../actions/user/user.actions';
 
+export interface UserReducer {
+  geocode?: GeocodeResponse;
+}
+
 interface UserReducerProps {
   type: string;
-  payload: {
-    geocode?: GeocodeResponse;
-  };
+  payload: UserReducer;
 }
 
 const initialState = {};
@@ -18,7 +20,9 @@ export const userReducer = (
     case UPDATE_USER_GEOCODE: {
       return {
         ...state,
-        ...payload,
+        geocode: {
+          ...payload.geocode,
+        },
       };
     }
     default:
