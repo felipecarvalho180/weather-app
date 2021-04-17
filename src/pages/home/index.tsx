@@ -5,7 +5,6 @@ import { DailyResponse } from '../../models/weather/weather.model';
 import Location from '../../components/location';
 import CurrentWeather from '../../components/current-weather';
 import CheckWeatherButton from '../../components/check-weather-button';
-import { InlineWrapper } from '../../style/components';
 import DailyWeather from '../../components/daily-weather';
 import { RootState } from '../../redux/reducers';
 

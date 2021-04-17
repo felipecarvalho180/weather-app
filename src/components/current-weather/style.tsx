@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ColumnWrapper, InlineWrapper } from '../../style/components';
+import { ColumnWrapper } from '../../style/components';
 import { BoldLabel, Label } from '../../style/labels';
 
 export const Wrapper = styled(ColumnWrapper)`
