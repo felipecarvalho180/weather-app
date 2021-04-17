@@ -1,4 +1,4 @@
-![Logo of the project](https://github.com/felipecarvalho180/weather-app/blob/master/public/readme-images/173141419_808604313409780_255041765936918259_n%5B318%5D.png)
+#Weather App
 
 ## About
 
