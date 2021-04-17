@@ -5,7 +5,7 @@
 Weather app is a web application created to provide information about the weather forecast to the user according to their location.
 The result showing in this site is the current forecast weather and the next seven days.
 
-[Build](https://laughing-jones-dca12f.netlify.app/)
+[weather-app.com.br](https://laughing-jones-dca12f.netlify.app/)
 
 ## How to use
 
