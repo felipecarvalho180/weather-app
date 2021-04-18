@@ -11,7 +11,7 @@
   "html.format.wrapAttributes": "force-aligned",
   "editor.wordWrap": "bounded",
   "terminal.integrated.shell.linux": "/usr/bin/bash",
-  "window.zoomLevel": -1,
+  "window.zoomLevel": -2,
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
