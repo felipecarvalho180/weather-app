@@ -35,6 +35,7 @@ The result showing in this site is the current forecast weather and the next sev
 
 - Clone the project.
 - Run the command "yarn install" or "npm install".
+- Create a .env file in the root of project, set the variables [REACT_APP_OPEN_CAGE_KEY](https://opencagedata.com/api) and [REACT_APP_OPEN_WEATHER_KEY](https://openweathermap.org/api), create account and use your keys.
 - Run the command "yarn start".
 
 ## Techs
