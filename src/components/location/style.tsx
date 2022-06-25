@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { InlineWrapper } from '../../style/components';
-import { Label } from '../../style/labels';
+// import { Label } from '../../style/labels';
 
 export const AddressWrapper = styled(InlineWrapper)`
   @media (min-width: 641px) {
@@ -20,12 +20,12 @@ export const AddressWrapper = styled(InlineWrapper)`
   }
 `;
 
-export const AddressLabel = styled(Label)`
-  margin-bottom: 0;
-  font-size: 40px;
-`;
+// export const AddressLabel = styled(Label)`
+//   margin-bottom: 0;
+//   font-size: 40px;
+// `;
 
-export const DateLabel = styled(Label)`
-  font-size: 16px;
-  text-align: center;
-`;
+// export const DateLabel = styled(Label)`
+//   font-size: 16px;
+//   text-align: center;
+// `;

@@ -1,22 +1,19 @@
 import styled from 'styled-components';
-import { PRIMARY_COLOR, SECONDARY_COLOR } from '../colors';
 
-export const Label = styled.span`
-  color: ${PRIMARY_COLOR};
-  font-size: 14px;
-  margin: 0;
-  font-weight: 100;
+export const TitleLabel = styled.span`
+  font-size: ${({ theme }) => theme.fontSize.title};
+  font-weight: ${({ theme }) => theme.fontWeight.title};
+  color: ${({ theme }) => theme.colors.white};
 `;
 
-export const SecondaryLabel = styled.span`
-  color: ${SECONDARY_COLOR};
-  font-size: 14px;
-  margin: 0;
+export const DescriptionLabel = styled.span`
+  font-size: ${({ theme }) => theme.fontSize.description};
+  font-weight: ${({ theme }) => theme.fontWeight.description};
+  color: ${({ theme }) => theme.colors.white};
 `;
 
-export const BoldLabel = styled.span`
-  color: ${PRIMARY_COLOR};
-  font-size: 14px;
-  font-weight: bold;
-  margin: 0;
+export const TextLabel = styled.span`
+  font-size: ${({ theme }) => theme.fontSize.text};
+  font-weight: ${({ theme }) => theme.fontWeight.text};
+  color: ${({ theme }) => theme.colors.white};
 `;

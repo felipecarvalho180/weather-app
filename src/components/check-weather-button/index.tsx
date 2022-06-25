@@ -7,7 +7,6 @@ import { updateWeather } from '../../redux/actions/weather/weather.actions';
 import { getGeocode } from '../../services/geocode/geocode.service';
 import { getWeather } from '../../services/weather/weather.service';
 import Button from '../button';
-import Logo from '../logo';
 import { Wrapper } from './style';
 
 const CheckWeatherButton: React.FC = () => {
@@ -95,7 +94,6 @@ const CheckWeatherButton: React.FC = () => {
 
   return (
     <Wrapper>
-      <Logo />
       <Button
         type="button"
         onClick={handleGetUserGeolocation}

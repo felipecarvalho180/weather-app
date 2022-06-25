@@ -1,17 +1,10 @@
 {
   "editor.formatOnSave": true,
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
   "editor.tabSize": 2,
   "html.format.wrapLineLength": 80,
   "html.format.wrapAttributes": "force-aligned",
   "editor.wordWrap": "bounded",
-  "terminal.integrated.shell.linux": "/usr/bin/bash",
-  "window.zoomLevel": -2,
+  "window.zoomLevel": -1,
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
@@ -24,7 +17,6 @@
   },
   "dart.openDevTools": "flutter",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Palenight Operator",
   "[typescript]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true,

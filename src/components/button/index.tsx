@@ -2,7 +2,6 @@ import React from 'react';
 import ClockLoader from 'react-spinners/ClockLoader';
 import { useSelector } from 'react-redux';
 import { Wrapper } from './style';
-import { BasicButton } from '../../style/buttons';
 import { RootState } from '../../redux/reducers';
 
 interface ButtonProps {
@@ -23,9 +22,9 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <Wrapper onClick={onClick}>
       {loading && <ClockLoader loading size={20} />}
-      <BasicButton disabled={!!loading} type={type}>
+      {/* <BasicButton disabled={!!loading} type={type}>
         {text}
-      </BasicButton>
+      </BasicButton> */}
     </Wrapper>
   );
 };
