@@ -1,23 +1,24 @@
 import styled from 'styled-components';
-import { ColumnWrapper } from '../../style/components';
-// import { BoldLabel } from '../../style/labels';
+import { InlineWrapper } from '../../style/components';
+import { TitleLabel } from '../../style/labels';
 
-export const Wrapper = styled(ColumnWrapper)`
-  margin: 40px 0;
+export const Wrapper = styled(InlineWrapper)`
+  width: fit-content;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme }) => theme.colors.blackOpacity};
 `;
 
-// export const TempLabel = styled(BoldLabel)`
-//   font-size: 90px;
-//   margin-left: 20px;
-// `;
+export const TempLabel = styled(TitleLabel)`
+  font-size: 70px;
+  margin-right: 10px;
+`;
 
 export const WeatherIcon = styled.img`
   height: 100px;
   width: 100px;
+  margin-left: 10px;
 `;
-
-// export const Subtitles = styled(Label)`
-//   :first-child {
-//     margin-right: 10px;
-//   }
-// `;

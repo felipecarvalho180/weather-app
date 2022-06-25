@@ -1,20 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
-import PermissionError from './components/error-toast';
 import GlobalStyle from './globalStyles';
+import { GeocodeProvider } from './hooks/useGeocode';
+import { WeatherProvider } from './hooks/useWeather';
 import App from './pages/home';
-import store from './redux/store';
 import theme from './style/theme';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <GlobalStyle />
-    <Provider store={store}>
-      <PermissionError />
-      <App />
-    </Provider>
+    <GeocodeProvider>
+      <WeatherProvider>
+        <GlobalStyle />
+        <ToastContainer />
+        <App />
+      </WeatherProvider>
+    </GeocodeProvider>
   </ThemeProvider>,
   document.getElementById('root'),
 );

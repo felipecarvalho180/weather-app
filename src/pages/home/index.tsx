@@ -1,45 +1,49 @@
 import React from 'react';
+import PulseLoader from 'react-spinners/PulseLoader';
+import { useTheme } from 'styled-components';
+
 import CurrentWeather from '../../components/current-weather';
 import { Sidebar } from '../../components/sidebar';
-// import { useSelector } from 'react-redux';
-import { ContentWrapper, Title, Wrapper } from './style';
-// import { DailyResponse } from '../../models/weather/weather.model';
-// import Location from '../../components/location';
-// import CurrentWeather from '../../components/current-weather';
-// import CheckWeatherButton from '../../components/check-weather-button';
-// import DailyWeather from '../../components/daily-weather';
-// import { RootState } from '../../redux/reducers';
+import { useGeocode } from '../../hooks/useGeocode';
+import { useWeather } from '../../hooks/useWeather';
+import { InlineWrapper } from '../../style/components';
+import { TitleLabel } from '../../style/labels';
+import { ContentWrapper, Loading, Title, Wrapper } from './style';
 
-const App: React.FC = () => (
-  // const { current, daily, geocode, loading } = useSelector(
-  //   (state: RootState) => ({
-  //     current: state.weather.current,
-  //     daily: state.weather.daily,
-  //     geocode: state.user.geocode,
-  //     loading: state.loading,
-  //   }),
-  // );
+const App: React.FC = () => {
+  const theme = useTheme();
+  const { weather, loading } = useWeather();
+  const { geocode } = useGeocode();
 
-  <Wrapper>
-    <ContentWrapper>
-      <Title>Weather App</Title>
+  return (
+    <Wrapper>
+      <ContentWrapper>
+        <Title>Weather App</Title>
 
-      {/* {current && <CurrentWeather {...current} />} */}
-    </ContentWrapper>
-    <Sidebar />
-    {/* {(!current || !daily || !geocode) && <CheckWeatherButton />} */}
-    {/* {current && daily && geocode && !loading && (
-        <ContentWrapper>
-          <Location {...geocode} />
-          <DailyWrapper>
-            {daily
-              .map((day: DailyResponse) => (
-                <DailyWeather key={day.dataTime} {...day} />
-              ))
-              .slice(1)}
-          </DailyWrapper>
-        </ContentWrapper>
-      )} */}
-  </Wrapper>
-);
+        {loading && (
+          <Loading>
+            <TitleLabel>Loading</TitleLabel>
+            <PulseLoader color={theme.colors.white} loading size={8} />
+          </Loading>
+        )}
+
+        {weather && geocode && weather.current && !loading && (
+          <CurrentWeather {...weather.current} {...geocode} />
+        )}
+      </ContentWrapper>
+      <Sidebar />
+      {/* {current && daily && geocode && !loading && (
+      <ContentWrapper>
+        <DailyWrapper>
+          {daily
+            .map((day: DailyResponse) => (
+              <DailyWeather key={day.dataTime} {...day} />
+            ))
+            .slice(1)}
+        </DailyWrapper>
+      </ContentWrapper>
+    )} */}
+    </Wrapper>
+  );
+};
 export default App;

@@ -1,30 +1,26 @@
 import React from 'react';
-import { CurrentResponse } from '../../models/weather/weather.model';
-import { ColumnWrapper, InlineWrapper } from '../../style/components';
-import { WeatherIcon, Wrapper } from './style';
 
-const CurrentWeather: React.FC<CurrentResponse> = ({
+import { GeocodeResponse } from '../../models/geocode/geocode.model';
+import { CurrentResponse } from '../../models/weather/weather.model';
+import { ColumnWrapper } from '../../style/components';
+import { TextLabel, TitleLabel } from '../../style/labels';
+import { TempLabel, WeatherIcon, Wrapper } from './style';
+
+const CurrentWeather: React.FC<CurrentResponse & GeocodeResponse> = ({
   temp,
-  dataTime,
-  feelsLike,
-  humidity,
   weatherIcon,
-}: CurrentResponse) => (
+  city,
+}: CurrentResponse & GeocodeResponse) => (
   <Wrapper>
-    <InlineWrapper>
-      <WeatherIcon
-        src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
-        alt="Icone temperatura"
-      />
-      {/* <TempLabel>{Math.round(temp)}ºC</TempLabel> */}
-    </InlineWrapper>
+    <TempLabel>{Math.round(temp)}º</TempLabel>
     <ColumnWrapper>
-      <InlineWrapper>
-        {/* <Subtitles>Feels like {Math.round(feelsLike)}ºC</Subtitles>
-        <Subtitles>Humidity {humidity}%</Subtitles> */}
-      </InlineWrapper>
-      {/* <Label>Updated {new Date(dataTime * 1000).toLocaleTimeString()}</Label> */}
+      <TitleLabel>{city}</TitleLabel>
+      <TextLabel>{new Date().toDateString()}</TextLabel>
     </ColumnWrapper>
+    <WeatherIcon
+      src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
+      alt="Icone temperatura"
+    />
   </Wrapper>
 );
 
