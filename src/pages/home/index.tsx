@@ -1,24 +1,32 @@
+import { Warning } from 'phosphor-react';
 import React from 'react';
 import PulseLoader from 'react-spinners/PulseLoader';
 import { useTheme } from 'styled-components';
 
-import CurrentWeather from '../../components/current-weather';
-import { Sidebar } from '../../components/sidebar';
+import CurrentWeather from '../../components/CurrentWeather';
+import { Sidebar } from '../../components/Sidebar';
 import { useGeocode } from '../../hooks/useGeocode';
 import { useWeather } from '../../hooks/useWeather';
-import { InlineWrapper } from '../../style/components';
-import { TitleLabel } from '../../style/labels';
-import { ContentWrapper, Loading, Title, Wrapper } from './style';
+import { ColumnWrapper } from '../../style/components';
+import { DescriptionLabel, TitleLabel } from '../../style/labels';
+import { ContentWrapper, Loading, Title, Wrapper } from './styles';
 
-const App: React.FC = () => {
+const Home: React.FC = () => {
   const theme = useTheme();
-  const { weather, loading } = useWeather();
+  const { weather, loading, getUserLocation, geocodeNotAllowed } = useWeather();
   const { geocode } = useGeocode();
 
   return (
-    <Wrapper>
+    <Wrapper weatherCode={weather?.current?.weatherIcon}>
       <ContentWrapper>
         <Title>Weather App</Title>
+
+        {geocodeNotAllowed && (
+          <ColumnWrapper>
+            <Warning size={32} color={theme.colors.white} />
+            <DescriptionLabel>Your location blocked</DescriptionLabel>
+          </ColumnWrapper>
+        )}
 
         {loading && (
           <Loading>
@@ -32,18 +40,7 @@ const App: React.FC = () => {
         )}
       </ContentWrapper>
       <Sidebar />
-      {/* {current && daily && geocode && !loading && (
-      <ContentWrapper>
-        <DailyWrapper>
-          {daily
-            .map((day: DailyResponse) => (
-              <DailyWeather key={day.dataTime} {...day} />
-            ))
-            .slice(1)}
-        </DailyWrapper>
-      </ContentWrapper>
-    )} */}
     </Wrapper>
   );
 };
-export default App;
+export default Home;

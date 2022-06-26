@@ -1,7 +1,8 @@
 import React from 'react';
 import { Warning } from 'phosphor-react';
 import { useTheme } from 'styled-components';
-import { Wrapper } from './style';
+
+import { Wrapper } from './styles';
 
 interface ToastifyProps {
   message: string;

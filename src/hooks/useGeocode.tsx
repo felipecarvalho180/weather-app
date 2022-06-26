@@ -5,7 +5,7 @@ import React, {
   useContext,
   useState,
 } from 'react';
-import toast from '../components/toast';
+import toast from '../components/Toast';
 import { getGeocode } from '../services/geocode/geocode.service';
 
 interface Geocode {

@@ -1,11 +1,10 @@
 export default {
   colors: {
-    primary: '#0D222D',
-    secondary: '#829F9A',
     text: '#4E616B',
     white: '#FFFFFF',
     black: '#000000',
-    blackOpacity: 'rgba(0,0,0, 0.4)',
+    blackOpacity4: 'rgba(0,0,0, 0.4)',
+    blackOpacity5: 'rgba(0,0,0, 0.5)',
   },
   fontWeight: {
     title: '700',

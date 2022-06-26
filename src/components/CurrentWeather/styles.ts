@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { InlineWrapper } from '../../style/components';
 import { TitleLabel } from '../../style/labels';
 
@@ -9,7 +10,7 @@ export const Wrapper = styled(InlineWrapper)`
   align-items: center;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.black};
-  background-color: ${({ theme }) => theme.colors.blackOpacity};
+  background-color: ${({ theme }) => theme.colors.blackOpacity4};
 `;
 
 export const TempLabel = styled(TitleLabel)`

@@ -4,7 +4,7 @@ import { GeocodeResponse } from '../../models/geocode/geocode.model';
 import { CurrentResponse } from '../../models/weather/weather.model';
 import { ColumnWrapper } from '../../style/components';
 import { TextLabel, TitleLabel } from '../../style/labels';
-import { TempLabel, WeatherIcon, Wrapper } from './style';
+import { TempLabel, WeatherIcon, Wrapper } from './styles';
 
 const CurrentWeather: React.FC<CurrentResponse & GeocodeResponse> = ({
   temp,

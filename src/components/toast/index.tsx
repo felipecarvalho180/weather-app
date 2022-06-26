@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast as toastify, ToastOptions } from 'react-toastify';
+
 import ToastifyComponent from './ToastifyComponent';
 
 interface ToastProps {

@@ -2,11 +2,12 @@
 import React, {
   createContext,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
   useState,
 } from 'react';
-import toast from '../components/toast';
+import toast from '../components/Toast';
 
 import {
   CurrentResponse,
@@ -24,6 +25,7 @@ interface WeatherContextData {
   weather: Weather | undefined;
   geocodeNotAllowed: boolean;
   loading: boolean;
+  getUserLocation: () => void;
 }
 
 interface WeatherProviderProps {
@@ -57,13 +59,13 @@ function WeatherProvider({ children }: WeatherProviderProps) {
     }
   }
 
-  useEffect(() => {
-    if (weather) return;
+  const getUserLocation = useCallback(() => {
     const { geolocation } = navigator;
 
     geolocation.getCurrentPosition(
       (position: GeolocationPosition) => {
         handleGetWeather(position);
+        setGeocodeNotAllowed(false);
       },
       () => {
         setGeocodeNotAllowed(true);
@@ -72,8 +74,16 @@ function WeatherProvider({ children }: WeatherProviderProps) {
     );
   }, []);
 
+  useEffect(() => {
+    if (weather) return;
+
+    getUserLocation();
+  }, []);
+
   return (
-    <WeatherContext.Provider value={{ weather, geocodeNotAllowed, loading }}>
+    <WeatherContext.Provider
+      value={{ weather, geocodeNotAllowed, loading, getUserLocation }}
+    >
       {children}
     </WeatherContext.Provider>
   );

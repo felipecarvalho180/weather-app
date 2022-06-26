@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 
-export const Container = styled.aside`
+export const Wrapper = styled.aside`
   width: 500px;
-  height: 100vh;
-  background-color: ${({ theme }) => theme.colors.primary};
-  opacity: 80%;
+  padding: 20px;
+  overflow-y: auto;
+`;
+
+export const Content = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 30px;
+  grid-row-gap: 20px;
+  align-items: center;
 `;
