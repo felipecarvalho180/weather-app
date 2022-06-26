@@ -5,31 +5,31 @@
 Weather app is a web application created to provide information about the weather forecast to the user according to their location.
 The result showing in this site is the current forecast weather and the next seven days.
 
-[weather-app.com.br](https://laughing-jones-dca12f.netlify.app/)
+[weather-app.com.br](https://cheerful-blancmange-cb9910.netlify.app/)
 
 ## How to use
 
 ##### When you click on the button check the weather forecast a box will appear asking for access to your location, for the correct functioning of the site, accept it.
 
-![Button check weather](https://github.com/felipecarvalho180/weather-app/blob/master/public/readme-images/Captura%20de%20tela%20de%202021-04-17%2017-45-19.png)
+![Button check weather](https://github.com/felipecarvalho180/weather-app/blob/master/public/readme-images/permission-request.png)
 
 ##### After that, the website will make the necessary requests and show the results on the screen.
 
-![Result screen](https://github.com/felipecarvalho180/weather-app/blob/master/public/readme-images/Captura%20de%20tela%20de%202021-04-17%2017-51-23.png)
+![Result screen](https://github.com/felipecarvalho180/weather-app/blob/master/public/readme-images/success.png)
 
 ## Common erros
 
 ##### When you don't accepted the location permission after press the button, the website will show you the error:
 
-![Location error](https://github.com/felipecarvalho180/weather-app/blob/master/public/readme-images/Captura%20de%20tela%20de%202021-04-17%2018-00-56.png)
+![Location error](https://github.com/felipecarvalho180/weather-app/blob/master/public/readme-images/permission-blocked.png)
 
 ##### When geocode api call has an error, the website will show you the error:
 
-![Geocode error](https://github.com/felipecarvalho180/weather-app/blob/master/public/readme-images/Captura%20de%20tela%20de%202021-04-17%2018-04-01.png)
+![Geocode error](https://github.com/felipecarvalho180/weather-app/blob/master/public/readme-images/location-error.png)
 
 ##### When weather api call has an error, the website will show you the error:
 
-![Geocode error](https://github.com/felipecarvalho180/weather-app/blob/master/public/readme-images/Captura%20de%20tela%20de%202021-04-17%2018-06-43.png)
+![Geocode error](https://github.com/felipecarvalho180/weather-app/blob/master/public/readme-images/weather-error.png)
 
 ### Instalation
 
@@ -47,16 +47,16 @@ The result showing in this site is the current forecast weather and the next sev
 ### Style
 
 - styled-components
-- polished
+- phosphor-react
 
 ### Bibliotecas para guardar dados
 
-- react-redux
-- redux
-- redux-devtools-extension
+- context (React)
 
 ### Outros
 
+- date-fns
 - react-spinners
 - react-toastify
 - typescript
+- axios
