@@ -9,6 +9,20 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
   }
+
+  button {
+    background: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
+    -webkit-appearance: button; 
+    -webkit-user-select: none; 
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
 `;
 
 export default GlobalStyle;

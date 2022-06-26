@@ -60,6 +60,7 @@ function WeatherProvider({ children }: WeatherProviderProps) {
   }
 
   const getUserLocation = useCallback(() => {
+    setLoading(true);
     const { geolocation } = navigator;
 
     geolocation.getCurrentPosition(

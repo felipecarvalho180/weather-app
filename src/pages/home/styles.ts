@@ -51,3 +51,7 @@ export const Loading = styled(InlineWrapper)`
     margin-right: 5px;
   }
 `;
+
+export const GeocodeNotAllowedWrapper = styled(ColumnWrapper)`
+  gap: 20px;
+`;

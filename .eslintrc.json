@@ -34,6 +34,7 @@
     ],
     "@typescript-eslint/no-use-before-define": ["error"],
     "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/no-unescaped-entities": "off",
     "camelcase": "off",
     "@typescript-eslint/camelcase": "off",
     "import/prefer-default-export": "off",
