@@ -11,6 +11,11 @@ export const Wrapper = styled(InlineWrapper)`
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.black};
   background-color: ${({ theme }) => theme.colors.blackOpacity4};
+
+  @media (max-width: 455px) {
+    flex-direction: column;
+    width: auto;
+  }
 `;
 
 export const TempLabel = styled(TitleLabel)`

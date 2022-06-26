@@ -23,7 +23,13 @@ const Home: React.FC = () => {
   const { geocode } = useGeocode();
 
   return (
-    <Wrapper weatherCode={weather?.current?.weatherIcon}>
+    <Wrapper
+      weatherCode={
+        weather?.current?.weatherIcon !== '01n'
+          ? weather?.current?.weatherDescription
+          : 'clear night'
+      }
+    >
       <ContentWrapper>
         <Title>Weather App</Title>
 

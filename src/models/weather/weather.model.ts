@@ -84,6 +84,7 @@ export interface CurrentResponse {
   humidity: number;
   temp: number;
   weatherIcon: string;
+  weatherDescription: string;
 }
 
 export const Weather = ({
@@ -97,6 +98,7 @@ export const Weather = ({
     humidity: current.humidity,
     temp: current.temp,
     weatherIcon: current.weather[0].icon,
+    weatherDescription: current.weather[0].description,
   },
   daily: daily.map(({ temp, weather, dt }) => ({
     dataTime: dt,

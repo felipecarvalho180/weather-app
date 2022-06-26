@@ -4,6 +4,14 @@ export const Wrapper = styled.aside`
   width: 500px;
   padding: 20px;
   overflow-y: auto;
+
+  @media (max-width: 885px) {
+    width: auto;
+  }
+
+  @media (max-width: 455px) {
+    overflow-y: unset;
+  }
 `;
 
 export const Content = styled.div`
@@ -12,4 +20,8 @@ export const Content = styled.div`
   grid-column-gap: 30px;
   grid-row-gap: 20px;
   align-items: center;
+
+  @media (max-width: 455px) {
+    grid-template-columns: 1fr;
+  }
 `;

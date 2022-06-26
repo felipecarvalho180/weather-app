@@ -1,4 +1,5 @@
 import React from 'react';
+import { format } from 'date-fns';
 
 import { GeocodeResponse } from '../../models/geocode/geocode.model';
 import { CurrentResponse } from '../../models/weather/weather.model';
@@ -15,7 +16,7 @@ const CurrentWeather: React.FC<CurrentResponse & GeocodeResponse> = ({
     <TempLabel>{Math.round(temp)}º</TempLabel>
     <ColumnWrapper>
       <TitleLabel>{city}</TitleLabel>
-      <TextLabel>{new Date().toDateString()}</TextLabel>
+      <TextLabel>{format(new Date(), "EEEE', 'MMM d', 'yyyy")}</TextLabel>
     </ColumnWrapper>
     <WeatherIcon
       src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}

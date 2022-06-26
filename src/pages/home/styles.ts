@@ -4,16 +4,23 @@ import { ColumnWrapper, InlineWrapper } from '../../style/components';
 import { TitleLabel } from '../../style/labels';
 
 interface WrapperInterface {
-  weatherCode?: string;
+  weatherCode?: string | undefined;
 }
 
 const handleColorType = (code: string | undefined) => {
-  switch (code) {
-    case '04n':
-      return 'https://i.imgur.com/5IKpwi1.jpg';
-    default:
-      return 'https://i.imgur.com/Qf3Seji.jpg';
-  }
+  if (code?.includes('clouds') || code?.includes('mist'))
+    return 'https://i.imgur.com/5IKpwi1.jpg';
+
+  if (
+    code?.includes('rain') ||
+    code?.includes('thunderstorm') ||
+    code?.includes('snow')
+  )
+    return 'https://i.imgur.com/Qt7yrXd.jpg';
+
+  if (code?.includes('night')) return 'https://i.imgur.com/GP42KRX.jpg';
+
+  return 'https://i.imgur.com/Qf3Seji.jpg';
 };
 
 export const Wrapper = styled.div<WrapperInterface>`
@@ -22,27 +29,34 @@ export const Wrapper = styled.div<WrapperInterface>`
   overflow: hidden;
   background: ${({ weatherCode }) => `url(${handleColorType(weatherCode)})`};
   background-size: cover;
-`;
+  -webkit-transition: background-image 0.5s ease-in-out;
+  transition: background-image 0.5s ease-in-out;
 
-/*
-  sol
-  https://i.imgur.com/Qf3Seji.jpg
-  nuvens
-  https://i.imgur.com/5IKpwi1.jpg
-  chuva
-  https://i.imgur.com/Qt7yrXd.jpg
-  noite
-  https://i.imgur.com/GP42KRX.jpg
-*/
+  @media (max-width: 885px) {
+    flex-direction: column;
+  }
+
+  @media (max-width: 455px) {
+    overflow: auto;
+  }
+`;
 
 export const ContentWrapper = styled(ColumnWrapper)`
   flex: 1;
   padding: 50px;
   justify-content: space-between;
+
+  @media (max-width: 885px) {
+    padding: 20px;
+  }
 `;
 
 export const Title = styled(TitleLabel)`
   font-weight: ${({ theme }) => theme.fontWeight.text};
+
+  @media (max-width: 885px) {
+    margin-bottom: 30px;
+  }
 `;
 
 export const Loading = styled(InlineWrapper)`
