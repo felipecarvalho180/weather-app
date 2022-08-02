@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react';
 import { Warning } from 'phosphor-react';
 import React from 'react';
 import PulseLoader from 'react-spinners/PulseLoader';
@@ -6,9 +7,9 @@ import { Button } from '../../components/Button';
 
 import CurrentWeather from '../../components/CurrentWeather';
 import { Sidebar } from '../../components/Sidebar';
-import { useGeocode } from '../../hooks/useGeocode';
 import { useWeather } from '../../hooks/useWeather';
 import { DescriptionLabel, TitleLabel } from '../../style/labels';
+import { useStores } from '../../utils/hooks/useStores';
 import {
   ContentWrapper,
   GeocodeNotAllowedWrapper,
@@ -20,7 +21,7 @@ import {
 const Home: React.FC = () => {
   const theme = useTheme();
   const { weather, loading, getUserLocation, geocodeNotAllowed } = useWeather();
-  const { geocode } = useGeocode();
+  const { geocode } = useStores();
 
   return (
     <Wrapper
@@ -32,6 +33,20 @@ const Home: React.FC = () => {
     >
       <ContentWrapper>
         <Title>Weather App</Title>
+
+        <button
+          type="button"
+          onClick={() =>
+            geocode.changeGeocode({
+              coords: {
+                latitude: -23.047144,
+                longitude: -44.4958137,
+              },
+            })
+          }
+        >
+          Teste
+        </button>
 
         {geocodeNotAllowed && !loading && (
           <GeocodeNotAllowedWrapper>
@@ -53,11 +68,11 @@ const Home: React.FC = () => {
         )}
 
         {weather && geocode && weather.current && !loading && (
-          <CurrentWeather {...weather.current} {...geocode} />
+          <CurrentWeather {...weather.current} {...geocode.geocodeData} />
         )}
       </ContentWrapper>
       <Sidebar />
     </Wrapper>
   );
 };
-export default Home;
+export default observer(Home);

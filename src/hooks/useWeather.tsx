@@ -13,8 +13,8 @@ import {
   CurrentResponse,
   DailyResponse,
 } from '../models/weather/weather.model';
-import { getWeather } from '../services/weather/weather.service';
-import { useGeocode } from './useGeocode';
+import { getWeather } from '../api/weather/weather.service';
+import { useStores } from '../utils/hooks/useStores';
 
 interface Weather {
   current: CurrentResponse;
@@ -37,7 +37,7 @@ const WeatherContext = createContext<WeatherContextData>(
 );
 
 function WeatherProvider({ children }: WeatherProviderProps) {
-  const { handleGetGeocode } = useGeocode();
+  const { geocode } = useStores();
 
   const [weather, setWeather] = useState<Weather>();
   const [geocodeNotAllowed, setGeocodeNotAllowed] = useState<boolean>(false);
@@ -50,7 +50,7 @@ function WeatherProvider({ children }: WeatherProviderProps) {
       const response = await getWeather({ latitude, longitude });
       setWeather(response);
 
-      await handleGetGeocode(position);
+      await geocode.getGeocode(position);
     } catch (error) {
       toast({ message: 'Error accessing weather forecast' });
       setLoading(false);
